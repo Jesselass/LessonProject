@@ -22,6 +22,14 @@ public class UserId {
         list.add("BD-12345");
         list.add("BD-12345");
         list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        list.add("BD-12345");
+        
         List<Long>list2 = new ArrayList<>();
         for (String s:list) {
             list2.add(Long.parseLong(s.replaceAll("\\D","")));
