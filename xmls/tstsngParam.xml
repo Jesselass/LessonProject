@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SuiteName" parallel="false">
+    <parameter name="email" value="gendolf2008@gmail.com"></parameter>
+    <parameter name="pass" value="qi2d1g"></parameter>
+    <parameter name="ageFrom" value="28"></parameter>
+    <parameter name="ageTo" value="33"></parameter>
+    <parameter name="likeAmount" value="15"></parameter>
+    <test name="paramsEx">
+        <classes>
+            <class name="lesson8.ParamsExample">
+            </class>
+        </classes>
+    </test>
+
+</suite>
