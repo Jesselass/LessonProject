@@ -38,7 +38,6 @@
                     <systemProperties>
                         <property>
                             <name>userEmail</name>
-                            <value>azaza@gmail.com</value>
                         </property>
                     </systemProperties>
                 </configuration>
