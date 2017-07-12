@@ -33,17 +33,17 @@ public class ParamsExample extends BrowserFactory {
     }*/
 
     @Test(priority = 1)
-    @Parameters({"email", "pass"})
-    public void paramsEx(String email, String pass) {
+    @Parameters({"userEmail", "pass"})
+    public void paramsEx(String userEmail, String pass) {
         driver.get("https://kismia.com");
         driver.findElement(By.xpath("//*[@id='user-email']")).clear();
-        driver.findElement(By.xpath("//*[@id='user-email']")).sendKeys(email);
+        driver.findElement(By.xpath("//*[@id='user-email']")).sendKeys(userEmail);
         driver.findElement(By.xpath("//*[@id='user-password']")).clear();
         driver.findElement(By.xpath("//*[@id='user-password']")).sendKeys(pass);
         driver.findElement(By.xpath("//*[@class='submit']")).click();
 
 
-        System.out.println("EMAIL:" + email);
+        System.out.println("EMAIL:" + userEmail);
         System.out.println("PASS:" + pass);
 
 
