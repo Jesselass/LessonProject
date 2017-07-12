@@ -17,15 +17,15 @@ public class HumanExample {
 
         return name;
     }
-    public   String human (String name, String surname, int age, String gender) {
+  /*  public   String human (String name, String surname, int age, String gender) {
 
         return "Имя " + name + " Фамилия " + surname + " Возраст " + age + " Пол " + gender;
-    }
+    */}
 
 
 
 
-    }
+
 
 
 

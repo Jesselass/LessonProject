@@ -17,38 +17,18 @@ public class UserId {
     }
 
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
-        list.add("BD-12345");
+        String x = "%20AZAZA%20";
+        String s = "AZAZATOVAR";
+       String z = x.replaceAll("[^%]","");
+        if (z.length()>1) {
+            System.out.println(z);
+            System.out.println("ENCODE");
+            List<String>azaza = new ArrayList<>();
+            azaza.add("asdsad");
+            azaza.add("sdsdssd");
+            azaza.add("sdsdsdsd");
+            System.out.println(azaza.toString().substring(1,azaza.toString().length()-1));
 
-
-        List<Long>list2 = new ArrayList<>();
-        for (String s:list) {
-            list2.add(Long.parseLong(s.replaceAll("\\D","")));
         }
-        System.out.println(list2);
-        }
+    }
 }

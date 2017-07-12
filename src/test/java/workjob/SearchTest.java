@@ -4,6 +4,7 @@ import core.BrowserFactory;
 import core.EmailUtils;
 import org.apache.commons.mail.EmailException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,30 +31,27 @@ public class SearchTest extends hw.LogIn {
     @DataProvider(name = "projectHashes")
     public static Object[][] projectHashes() {
         return new Object[][]{
-                {"CAEFKY2omgw5T5cHhK8Bw08mBg9L_87C"},
-                {"KsXvozgJ491bUrTgILJhCetzQGoKj0N3"},
-                {"Ig847cVwntJUvoV6AVxxjwwmZsmNQYNy"},
-                {"3O9eoyOyIcg9GCr_sLwtwjTFHQdrS51W"},
-                {"KFneCjMVSaPSkFXpNFBgVO_rao3BSEaB"},
-                {"dGDhKt4wfJcDOhylW1V70HmOrEAaYfbb"},
-                {"QP2pQhg77i2k4e2TOqHjk84WwL3plGqb"},
+                {"_rIinXgxjuddAUKNK74nw2ae5gHSoXuo"},
+
         };
     }
 
     @Test(priority = 1, dataProvider = "projectHashes")
 
-    public void tryToGetSearch(String hash) throws EmailException {
+    public void tryToGetSearch(String hash) throws EmailException, InterruptedException {
 
 
         driver.get("https://devt.onthe.io/" + hash);
+
         System.out.println(driver.getCurrentUrl());
         driver.findElement(By.cssSelector("[data-title='Site search']")).click();
         System.out.println(driver.getTitle());
-        // }
-        //   @Test (priority = 2)
-        // public void searchParse () {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".table_report_slice"), 3));
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("td  [data-name = search_items_null_number]")));
+        driver.findElement(By.cssSelector("td  [data-name = search_items_null_number]")).click();
+        wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(".table_report_slice"))));
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".table_report_slice"), 6));
+
         List<WebElement> elements = driver.findElements(By.cssSelector(".table_report_slice"));
         List<SearchInfo> searchResults = new ArrayList<>();
 
@@ -72,15 +70,12 @@ public class SearchTest extends hw.LogIn {
             }
         }
         for (SearchInfo searchResult : searchResults) {
-
             System.out.println(searchResult);
             System.out.println("");
-
         }
         SoftAssert softAssert = new SoftAssert();
 
         for (SearchInfo searchResult : searchResults) {
-
             if (searchResult.getNullSearchValue() > 0) {
                 softAssert.assertEquals(searchResult.getTransitionsToPage(), 0,
                         "В отчете ошибка, поисковой запрос " + searchResult.getTitle() + " является нулевым, но имеет выдачу");
@@ -94,7 +89,7 @@ public class SearchTest extends hw.LogIn {
         } catch (AssertionError e) {
             System.out.println(e.getMessage());
             EmailUtils emailUtils = new EmailUtils();
-            emailUtils.sendEmail("Ошибка в поисках " + driver.getTitle(), e.getMessage(), "krav@onthe.io", "vadim@onthe.io");
+            emailUtils.sendEmail("Ошибка в поисках " + driver.getTitle(), e.getMessage(), "krav@onthe.io");
         }
 
 

@@ -14,7 +14,7 @@ public class LogIn extends BrowserFactory {
 
 @Test
     public  void tryToLogIn() {
-        driver.get("https://devt.onthe.io");
+        driver.get("https://nt.onthe.io");
         driver.manage().window().maximize();
 
         WebDriverWait wait = new WebDriverWait(driver, 15);

@@ -31,7 +31,7 @@ public class TrelloApiClient {
 
     public String boardId = "pYbUadku";
     // public String idBoard = "594172c37011f70063066b75";
-    // public String idList = "59453dfb8b7226ede631b2a1";
+     public String idList = "59453dfb8b7226ede631b2a1";
     Gson gson = new Gson();
 
 
