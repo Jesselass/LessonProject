@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SearchSet" parallel="false"  group-by-instances="true">
+
+    <test name="searchTest">
+        <classes>
+            <class name="workjob.SearchTest">
+            </class>
+        </classes>
+    </test>
+    <test name="Funnel">
+        <classes>
+            <class name="workTest.FunnelScreen">
+            </class>
+        </classes>
+    </test>
+</suite>
