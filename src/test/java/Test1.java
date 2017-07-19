@@ -1,3 +1,4 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Step;
 
@@ -17,6 +18,7 @@ public class Test1 {
     public void atata(){
         logIn();
         sendEmail();
+        Assert.assertTrue(false,"VSIO PROPALO");
     }
     @Step("Почта")
     public void sendEmail(){
@@ -25,6 +27,7 @@ public class Test1 {
 
     @Step ("LogIn")
     public void logIn(){
+
 
     }
 }
