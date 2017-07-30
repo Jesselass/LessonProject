@@ -1,7 +1,10 @@
 import core.AllureUtils;
 import core.BrowserFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.Allure;
@@ -24,6 +27,10 @@ public class ImaxHW extends BrowserFactory {
        List<WebElement> times = driver().findElements(By.cssSelector(".p-one-day .t-imax .time "));
        WebElement element = times.get(times.size()-1);
        element.click();
+        WebDriverWait wait = new WebDriverWait(driver(), 10);
+        WebElement zal = driver().findElement(By.cssSelector(".zal-content"));
+        wait.until(ExpectedConditions.stalenessOf(zal));
+
        List<WebElement>freeSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000001"));
        List<WebElement>soldSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000005"));
        int allPlaces = freeSeat.size() + soldSeat.size();
