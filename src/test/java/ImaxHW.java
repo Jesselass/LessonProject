@@ -28,8 +28,8 @@ public class ImaxHW extends BrowserFactory {
        WebElement element = times.get(times.size()-1);
        element.click();
         WebDriverWait wait = new WebDriverWait(driver(), 10);
-        WebElement zal = driver().findElement(By.cssSelector(".zal-content"));
-        wait.until(ExpectedConditions.stalenessOf(zal));
+        WebElement zal = driver().findElement(By.cssSelector(".g-element.hs-image-0000000001"));
+        wait.until(ExpectedConditions.elementToBeClickable(zal));
 
        List<WebElement>freeSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000001"));
        List<WebElement>soldSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000005"));
