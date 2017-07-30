@@ -17,9 +17,10 @@ public class MethodsFactory {
         return new WebDriverWait(driver(),timeout);
     }
     public void get(String url){
-        driver.get(url);
+        driver().get(url);
         getWebDriverWait(WaitTime.DEFAULT_ELEMENT_WAIT).until(CustomConditions.pageLoaded());
     }
+
     public void title(){
         System.out.println(driver.getTitle());
 

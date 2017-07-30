@@ -23,11 +23,11 @@ public class Elem extends MethodsFactory{
 
 
     public void click(){
-       driver.findElement(by).click();
+       driver().findElement(by).click();
     }
     public void type(String text){find().clear(); find().sendKeys(text);}
-    public String getText(){String newText = driver.findElement(by).getText(); return newText;}
-    public void finder(){driver.findElement(by);}
+    public String getText(){String newText = driver().findElement(by).getText(); return newText;}
+    public void finder(){driver().findElement(by);}
     public WebElement find(){return getWebDriverWait(WaitTime.DEFAULT_ELEMENT_WAIT).until(ExpectedConditions.presenceOfElementLocated(by)); }
     public String getAttribute(String attributeName){return find().getAttribute(attributeName);}
 
