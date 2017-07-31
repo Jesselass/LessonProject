@@ -49,7 +49,7 @@ public class TrelloTask extends BrowserFactory {
         driver().findElement(By.cssSelector(".placeholder")).click();
         driver().findElement(By.cssSelector(".list-name-input")).sendKeys("NewList");
        WebElement element = driver().findElement(By.cssSelector(".js-save-edit"));
-        wait.until(ExpectedConditions.stalenessOf(element));
+        
         element.click();
         String check = driver().findElement(By.cssSelector("[aria-label=NewList]")).getText();
 
