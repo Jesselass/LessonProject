@@ -46,7 +46,7 @@ public class TrelloTask extends BrowserFactory {
             }
         }
         wait.until(ExpectedConditions.urlToBe("https://trello.com/b/pYbUadku/testboard"));
-        driver().findElement(By.cssSelector(".placeholder")).click();
+        driver().findElement(By.cssSelector(".js-open-add-list")).click();
         driver().findElement(By.cssSelector(".list-name-input")).sendKeys("NewList");
         driver().findElement(By.cssSelector(".js-save-edit")).click();
 
