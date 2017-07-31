@@ -63,8 +63,18 @@ public class TrelloTask extends BrowserFactory {
         String check = driver().findElement(By.cssSelector(".list-card-title")).getText();
         Assert.assertTrue(check.equals("azaza karto4ka"),"CARD CREATION FAILED");
     }
+    @Test(dependsOnMethods = "createCard")
+    public void commentCard(){
+        driver().findElement(By.cssSelector(".list-card-details")).click();
+        driver().findElement(By.cssSelector(".comment-box-input")).sendKeys("TOP COMMENT EVER");
+        driver().findElement(By.cssSelector(".js-add-comment")).click();
+        driver().findElement(By.cssSelector(".js-close-window")).click();
+        String check = driver().findElement(By.cssSelector(".badge-text")).getText();
 
-    @Test (dependsOnMethods = "createCard")
+        Assert.assertTrue(check.equals("1"));
+    }
+
+    @Test (dependsOnMethods = "commentCard")
     public void deleteCard() throws IOException {
         driver().findElement(By.cssSelector(".ui-droppable .js-card-menu")).click();
         List<WebElement> cardText = driver().findElements(By.cssSelector(".quick-card-editor-buttons-item-text"));
@@ -77,6 +87,7 @@ public class TrelloTask extends BrowserFactory {
         String idList = "59453dfb8b7226ede631b2a1";
         TrelloApiClient trelloApiClient = new TrelloApiClient();
         List<TrelloCard> checkeer = trelloApiClient.getAllCards(idList);
+        System.out.println(checkeer.size());
         Assert.assertTrue(checkeer.size()==0,"ALL CARDS REMOVED");
     }
 }
