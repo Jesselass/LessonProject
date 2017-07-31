@@ -78,7 +78,8 @@ public class TrelloTask extends BrowserFactory {
 
     @Test (dependsOnMethods = "commentCard")
     public void deleteCard() throws IOException {
-        driver().findElement(By.cssSelector(".ui-droppable .js-card-menu")).click();
+
+        driver().findElement(By.cssSelector(".ui-droppable.js-card-menu")).click();
         List<WebElement> cardText = driver().findElements(By.cssSelector(".quick-card-editor-buttons-item-text"));
         for (WebElement text:cardText ) {
             if (text.getText().equals("Архивировать")){
