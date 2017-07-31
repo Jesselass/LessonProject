@@ -20,8 +20,8 @@ public class PhoneRegex {
     @Test(dataProvider = "starsNames")
 
     public void hs(String starName){
-        String newName  =starName;
-        String rex = newName.replaceAll("\\D","");
+
+        String rex = starName.replaceAll("\\D","");
         System.out.println(rex);
     }
 }

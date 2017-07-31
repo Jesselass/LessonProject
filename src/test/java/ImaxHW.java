@@ -33,14 +33,15 @@ public class ImaxHW extends BrowserFactory {
 
        List<WebElement>freeSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000001"));
        List<WebElement>soldSeat = driver().findElements(By.cssSelector(".g-element.hs-image-0000000005"));
-       int allPlaces = freeSeat.size() + soldSeat.size();
+       double allPlaces = freeSeat.size() + soldSeat.size();
         System.out.println(allPlaces);
+        double soldOut = soldSeat.size();
         System.out.println(soldSeat.size());
-        int percentOfSold = soldSeat.size()/allPlaces*100;
+        double percentOfSold = (soldSeat.size()/allPlaces)*100;
         System.out.println(percentOfSold);
 
-        AllureUtils.fireAllureParameter("AllSeats", String.valueOf(allPlaces));
-        AllureUtils.fireAllureParameter("PercentOfSold",String.valueOf(percentOfSold));
-        Assert.assertTrue(percentOfSold>50,"SOLD OUT BIATCH");
+        AllureUtils.fireAllureParameter("AllSeats", String.valueOf((int)allPlaces));
+        AllureUtils.fireAllureParameter("PercentOfSold",String.valueOf((int)percentOfSold));
+        Assert.assertTrue(percentOfSold<50,"SOLD OUT BIATCH");
     }
 }
