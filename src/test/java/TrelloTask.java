@@ -68,6 +68,9 @@ public class TrelloTask extends BrowserFactory {
     @Test(dependsOnMethods = "createCard")
     public void commentCard(){
         driver().findElement(By.cssSelector(".list-card-details")).click();
+        WebDriverWait wait = new WebDriverWait(driver(), 15);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".comment-box-input")));
+
         driver().findElement(By.cssSelector(".comment-box-input")).sendKeys("TOP COMMENT EVER");
         driver().findElement(By.cssSelector(".js-add-comment")).click();
         driver().findElement(By.cssSelector(".js-close-window")).click();
