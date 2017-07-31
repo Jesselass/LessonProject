@@ -48,7 +48,9 @@ public class TrelloTask extends BrowserFactory {
         wait.until(ExpectedConditions.urlToBe("https://trello.com/b/pYbUadku/testboard"));
         driver().findElement(By.cssSelector(".placeholder")).click();
         driver().findElement(By.cssSelector(".list-name-input")).sendKeys("NewList");
-        driver().findElement(By.cssSelector(".js-save-edit")).click();
+       WebElement element = driver().findElement(By.cssSelector(".js-save-edit"));
+        wait.until(ExpectedConditions.stalenessOf(element));
+        element.click();
         String check = driver().findElement(By.cssSelector("[aria-label=NewList]")).getText();
 
         Assert.assertTrue(check.equals("NewList"),"LIST CREATION FAILED");
