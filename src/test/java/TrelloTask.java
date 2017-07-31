@@ -32,7 +32,7 @@ public class TrelloTask extends BrowserFactory {
         driver().findElement(By.cssSelector("#password")).clear();
         driver().findElement(By.cssSelector("#password")).sendKeys(pass);
         driver().findElement(By.cssSelector(".button-green")).click();
-        wait.until(ExpectedConditions.urlToBe("https://trello.com/"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".member-avatar")));
 
         Assert.assertTrue(driver().getTitle().equals("* Доски | Trello"),"LogIn DONE");
     }
