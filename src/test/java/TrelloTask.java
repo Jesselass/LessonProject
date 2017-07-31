@@ -10,7 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import trelloApi.TrelloApiClient;
+import trelloApi.models.Board;
+import trelloApi.models.TrelloCard;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -47,8 +51,32 @@ public class TrelloTask extends BrowserFactory {
         driver().findElement(By.cssSelector(".js-save-edit")).click();
         String check = driver().findElement(By.cssSelector("[aria-label=NewList]")).getText();
 
-        Assert.assertTrue(check.equals("NewList"));
+        Assert.assertTrue(check.equals("NewList"),"LIST CREATION FAILED");
 
     }
 
+    @Test (dependsOnMethods = "createList")
+    public void createCard(){
+        driver().findElement(By.cssSelector(".open-card-composer")).click();
+        driver().findElement(By.cssSelector(".js-card-title")).sendKeys("azaza karto4ka");
+        driver().findElement(By.cssSelector(".js-add-card")).click();
+        String check = driver().findElement(By.cssSelector(".list-card-title")).getText();
+        Assert.assertTrue(check.equals("azaza karto4ka"),"CARD CREATION FAILED");
+    }
+
+    @Test (dependsOnMethods = "createCard")
+    public void deleteCard() throws IOException {
+        driver().findElement(By.cssSelector(".ui-droppable .js-card-menu")).click();
+        List<WebElement> cardText = driver().findElements(By.cssSelector(".quick-card-editor-buttons-item-text"));
+        for (WebElement text:cardText ) {
+            if (text.getText().equals("Архивировать")){
+                text.click();
+            }
+        }
+        String boardId = "pYbUadku";
+        String idList = "59453dfb8b7226ede631b2a1";
+        TrelloApiClient trelloApiClient = new TrelloApiClient();
+        List<TrelloCard> checkeer = trelloApiClient.getAllCards(idList);
+        Assert.assertTrue(checkeer.size()==0,"ALL CARDS REMOVED");
+    }
 }
