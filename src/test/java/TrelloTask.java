@@ -38,14 +38,15 @@ public class TrelloTask extends BrowserFactory {
     }
     @Test (dependsOnMethods = "logIn")
     public void createList (){
-        WebDriverWait wait = new WebDriverWait(driver(), 10);
+        WebDriverWait wait = new WebDriverWait(driver(), 15);
         List<WebElement> boards = driver().findElements(By.cssSelector(".board-tile-details-name"));
         for (WebElement board:boards) {
             if(board.getText().equals("TestBoard")){
                 board.click();
             }
         }
-        wait.until(ExpectedConditions.urlToBe("https://trello.com/b/pYbUadku/testboard"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".js-open-add-list")));
+
         driver().findElement(By.cssSelector(".js-open-add-list")).click();
         driver().findElement(By.cssSelector(".list-name-input")).sendKeys("NewList");
         driver().findElement(By.cssSelector(".js-save-edit")).click();
