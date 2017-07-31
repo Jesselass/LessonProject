@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TrelloTask" parallel="false">
+    <parameter name="email" value="krav@onthe.io"></parameter>
+    <parameter name="pass" value="qi2d1gQI"></parameter>
+        <test name="logIn">
+        <classes>
+            <class name="TrelloTask">
+            </class>
+        </classes>
+    </test>
+
+</suite>
