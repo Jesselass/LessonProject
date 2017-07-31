@@ -34,7 +34,7 @@ public class TrelloTask extends BrowserFactory {
         driver().findElement(By.cssSelector(".button-green")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".member-avatar")));
 
-        Assert.assertTrue(driver().getTitle().equals("* Доски | Trello"),"LogIn DONE");
+        Assert.assertTrue(driver().findElement(By.cssSelector(".member-avatar")).isDisplayed(),"LogIn DONE");
     }
     @Test (dependsOnMethods = "logIn")
     public void createList (){
