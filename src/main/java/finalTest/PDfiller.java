@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Stories;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class PDfiller extends BrowserFactory {
     public String check ="";
     @Test
     @Parameters({"email", "pass"})
+    @Stories("logInStory")
     public void logIn(String email, String pass) {
         get("https://www.pdffiller.com/");
         driver().manage().window().maximize();
