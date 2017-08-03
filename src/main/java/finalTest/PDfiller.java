@@ -1,7 +1,6 @@
 package finalTest;
 
 import core.BrowserFactory;
-import core.Elem;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
@@ -11,12 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Stories;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 /**
  * Created by Dell-SSD on 02.08.2017.
@@ -26,7 +21,7 @@ public class PDfiller extends BrowserFactory {
     public String check ="";
     @Test
     @Parameters({"email", "pass"})
-    @Stories("logInStory")
+
     public void logIn(String email, String pass) {
         get("https://www.pdffiller.com/");
         driver().manage().window().maximize();
